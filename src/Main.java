@@ -91,9 +91,9 @@ public class Main {
     // метод на вывод ФИО всех сотрудников
     public static void printEmployeeFullName() {
         for (int i = 0; i < employees.length; i++) {
-            System.out.println((i+1)+") " +
-                    employees[i].getSurname()+ " " +
-                    employees[i].getName()+ " " +
+            System.out.println((i + 1) + ") " +
+                    employees[i].getSurname() + " " +
+                    employees[i].getName() + " " +
                     employees[i].getPatronymic());
         }
         return;

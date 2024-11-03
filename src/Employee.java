@@ -48,7 +48,7 @@ public class Employee { // класс Сотрудник
     }
 
     public int getId() {
-        return (id+1);
+        return (id + 1);
     }
 
     // менять фамилию, отдел, зарплату
@@ -70,7 +70,11 @@ public class Employee { // класс Сотрудник
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return department == employee.department && salary == employee.salary && id == employee.id && Objects.equals(surname, employee.surname) && Objects.equals(name, employee.name) && Objects.equals(patronymic, employee.patronymic);
+        return department == employee.department &&
+                salary == employee.salary && id == employee.id &&
+                Objects.equals(surname, employee.surname) &&
+                Objects.equals(name, employee.name)
+                && Objects.equals(patronymic, employee.patronymic);
     }
 
     @Override
