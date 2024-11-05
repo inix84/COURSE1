@@ -27,18 +27,18 @@ public class Main {
         }
         System.out.println();
         System.out.println("Бухгалтерские отчеты: ");
-        System.out.println("1) Сумма затра на ЗП в месяц : " + theAmountSalaries() + " рублей.");
+        System.out.println("1) Сумма затра на ЗП в месяц : " + getAmountSalaries() + " рублей.");
         System.out.print("2) Минимальная зп у сотрудника: ");
-        MinSalary();
+        getMinSalary();
         System.out.print("3) Максимальная зп у сотрудника: ");
-        MaxSalary();
-        System.out.println("4) Среднее значение зарплат: " + AverageSalary() + " рублей.");
+        getMaxSalary();
+        System.out.println("4) Среднее значение зарплат: " + getAverageSalary() + " рублей.");
         System.out.println();
         System.out.println("ФИО всех сотрудников: ");
         printEmployeeFullName();
     }
 
-    public static int theAmountSalaries() {
+    public static int getAmountSalaries() {
         int sum = 0;
         for (Employee element : employees) {
             sum += element.getSalary();// переменная типа сотрудник со свойствами (частности зп)
@@ -46,45 +46,37 @@ public class Main {
         return sum;
     }
 
-    public static void MinSalary() {
+    public static void getMinSalary() {
         // находим мин зп
         int min = employees[0].getSalary(); // инвариант, путь 1 зп будет мин
+        int imin = 0; // инвариант номера первого элемента
         for (int i = 0; i < employees.length; i++) {
             if (min > employees[i].getSalary()) {
                 min = employees[i].getSalary();
+                imin = i;
             }
         }
-        // находим сотрудника по этой зп
-        for (int i = 0; i < employees.length; i++) {
-            Employee employeeMin = employees[i];
-            if (employeeMin.getSalary() == min) {
-                System.out.println(employees[i]);
-            }
-        }
+        System.out.println(employees[imin]);
         return;
     }
 
-    public static void MaxSalary() {
+    public static void getMaxSalary() {
         // находим мax зп
         int max = employees[0].getSalary(); // инвариант, путь 1 зп будет мax
+        int imax = 0; // инвариант номера первого элемента
         for (int i = 0; i < employees.length; i++) {
-            if (max < employees[i].getSalary()) {
+            if (employees[i].getSalary() > max) {
                 max = employees[i].getSalary();
+                imax = i;
             }
         }
-        // находим сотрудника по этой зп
-        for (int i = 0; i < employees.length; i++) {
-            Employee employeeMin = employees[i];
-            if (employeeMin.getSalary() == max) {
-                System.out.println(employees[i]);
-            }
-        }
+        System.out.println(employees[imax]);
         return;
     }
 
     // среднее значение находим как деление суммы зп на количество созданных сотрудников
-    public static double AverageSalary() {
-        double averageSalary = theAmountSalaries() / Employee.getCounter();
+    public static double getAverageSalary() {
+        double averageSalary = getAmountSalaries() / Employee.getCounter();
         return averageSalary;
     }
 
